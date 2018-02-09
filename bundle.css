@@ -29,6 +29,10 @@ body .App {
   outline: none;
   border-bottom: 1px solid;
   font-size: 14px;
+  border-radius: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 
 .PokemonsSearch-select {
@@ -175,6 +179,18 @@ body .App {
 @media (max-width: 360px) {
   .Pokemon {
     width: 150px;
+    height: 130px;
+  }
+  .Pokemon .Pokemon-image {
+    width: 90px;
+    height: 90px;
+    background-size: 90px;
+  }
+}
+
+@media (max-width: 320px) {
+  .Pokemon {
+    width: 140px;
     height: 130px;
   }
   .Pokemon .Pokemon-image {

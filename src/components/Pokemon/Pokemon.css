@@ -56,6 +56,17 @@
     }
   }
 
+  @media (max-width: 320px) {
+    width: 140px;
+    height: 130px;
+
+    & .Pokemon-image {
+      width: 90px;
+      height: 90px;
+      background-size: 90px;
+    }
+  }
+
   &:hover {
     transform: scale(1.05);
     box-shadow: none;

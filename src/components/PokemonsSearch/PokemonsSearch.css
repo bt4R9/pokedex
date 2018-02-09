@@ -13,6 +13,8 @@
   outline: none;
   border-bottom: 1px solid;
   font-size: 14px;
+  border-radius: 0;
+  appearance: none;
 }
 
 .PokemonsSearch-select {
