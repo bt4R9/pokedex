@@ -1,0 +1,251 @@
+@keyframes pokemon-animation {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -15px, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.Pokemon {
+  position: relative;
+  overflow: hidden;
+  width: 174px;
+  height: 174px;
+  margin: 6px;
+  box-shadow: inset 0 0 30px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0.9;
+  transition: transform 500ms, opacity 500ms;
+  cursor: pointer;
+
+  @media (max-width: 412px) {
+    width: 120px;
+    height: 130px;
+
+    & .Pokemon-image {
+      width: 90px;
+      height: 90px;
+      background-size: 90px;
+    }
+  }
+
+  @media (max-width: 375px) {
+    width: 105px;
+    height: 130px;
+
+    & .Pokemon-image {
+      width: 90px;
+      height: 90px;
+      background-size: 90px;
+    }
+  }
+
+  @media (max-width: 360px) {
+    width: 150px;
+    height: 130px;
+
+    & .Pokemon-image {
+      width: 90px;
+      height: 90px;
+      background-size: 90px;
+    }
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: none;
+    opacity: 1;
+
+    & .Pokemon-stat {
+      opacity: 1;
+    }
+
+    & .Pokemon-image {
+      animation: pokemon-animation 2s infinite;
+    }
+
+    & .Pokemon-types-top {
+      transform: translateY(40px) scaleY(20);
+    }
+
+    & .Pokemon-types-bottom {
+      transform: translateY(-40px) scaleY(20);
+    }
+
+    & .Pokemon-name {
+      color: #fff;
+    }
+  }
+
+  &.Pokemon-selected {
+    z-index: 3;
+    opacity: 1;
+
+    & .Pokemon-inner {
+      opacity: 0;
+    }
+
+    & .Pokemon-types-top {
+      transform: translateY(48px) scaleY(20);
+    }
+
+    & .Pokemon-types-bottom {
+      transform: translateY(-48px) scaleY(20);
+    }
+  }
+}
+
+.Pokemon-inner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 250ms;
+}
+
+.Pokemon-name {
+  position: absolute;
+  bottom: 12px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.5);
+  transition: color 300ms;
+}
+
+.Pokemon-image {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 130px;
+}
+
+.Pokemon-stat {
+  font-size: 11px;
+  color: #fff;
+  text-align: center;
+  position: absolute;
+  z-index: 2;
+  top: 10px;
+  width: 20px;
+  height: 20px;
+  padding-top: 25px;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: top;
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+.Pokemon-stat-attack {
+  left: 10px;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOTAuMjI2IDI5MC4yMjYiPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik02My45NTEgMjQzLjU3NWE0Mi45MjEgNDIuOTIxIDAgMCAwLTcuMzYzLTkuODY5Yy0zLjEwNi0zLjEwMi02LjYyNi01LjYzMy0xMC40LTcuNjMtNC41MS0yLjM4Ny0uOTQ1LTcuNS0uOTQ1LTcuNSA0LjYxNi03LjAyMyA4LjgyNS0xNC4wNzkgMTIuMzA1LTIwLjIyNmwtMjMuMzYzLTIzLjM0NEgxMS41MDRhNy45IDcuOSAwIDAgMS03Ljg5OC03LjkwMiA3LjkgNy45IDAgMCAxIDcuODk4LTcuOWgyNS45NDdhNy45IDcuOSAwIDAgMSA1LjU4OCAyLjMxMmw4NS4zNzkgODUuMjkxYTcuOTA2IDcuOTA2IDAgMCAxIDIuMzE1IDUuNTg5djI2LjA3M2E3Ljg5NiA3Ljg5NiAwIDAgMS03LjkgNy44OTcgNy44OTYgNy44OTYgMCAwIDEtNy45MDQtNy44OTd2LTIyLjc5OGwtMjMuMjctMjMuMjRjLTYuMjgxIDMuNzA3LTEzLjU4MiA4LjI1Mi0yMC44MTYgMTMuMjUtLjAwMS0uMDAyLTQuMTQ1IDIuOTQ4LTYuODkyLTIuMTA2ek0yNi42MSAyMzcuMTAyYy03LjEwNiAwLTEzLjc4NCAyLjc2NC0xOC44MTIgNy43ODQtNS4wMTkgNS4wMTUtNy43ODIgMTEuNjg2LTcuNzgyIDE4Ljc3OCAwIDcuMDk3IDIuNzY0IDEzLjc2MiA3Ljc4MiAxOC43NzYgNS4wMjcgNS4wMTYgMTEuNzA2IDcuNzgzIDE4LjgxMiA3Ljc4NSA3LjEwMiAwIDEzLjc4MS0yLjc3IDE4LjgwNC03Ljc4NSA1LjAyMy01LjAxNSA3Ljc5LTExLjY4MiA3Ljc5LTE4Ljc3NiAwLTcuMDkzLTIuNzY4LTEzLjc2NC03Ljc5LTE4Ljc3OC01LjAyMi01LjAyLTExLjcwMi03Ljc4NC0xOC44MDQtNy43ODR6TTEwMC45ODUgMTgyLjMxOGMtMy41MDIgMy40OTktOS4yMzIgMy40OTktMTIuNzM0LjAwMWwtOC44MS04LjgwMWMtMy41MDItMy40OTgtMy41MDItOS4yMjMgMC0xMi43MjFMMjI5LjgzMiAxMC41NjRjMy41MDItMy40OTggMTAuNDAxLTYuNzI3IDE1LjMzLTcuMTc1TDI4Mi4wMjQuMDM3YzQuOTMtLjQ0OCA4LjU5NiAzLjIxOCA4LjE0OCA4LjE0OGwtMy4zNDYgMzYuNzkxYy0uNDQ4IDQuOTMtMy42OCAxMS44MjUtNy4xODIgMTUuMzI0bC0xNTAuNCAxNTAuMjUxYy0zLjUwMiAzLjQ5OC05LjIzMiAzLjQ5OC0xMi43MzQgMGwtOC44MjItOC44MTNjLTMuNTAyLTMuNDk4LTMuNTAyLTkuMjIzIDAtMTIuNzIybDEyNS45Mi0xMjUuODAzYTQuNzM0IDQuNzM0IDAgMCAwIC4wMDMtNi43MDIgNC43NDUgNC43NDUgMCAwIDAtNi43MDktLjAwMkwxMDAuOTg1IDE4Mi4zMTh6Ii8+PC9zdmc+);
+}
+
+.Pokemon-stat-defense {
+  right: 10px;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NjkuMzMzIDQ2OS4zMzMiPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0yMzQuNjY3IDBsLTE5MiA4NS4zMzN2MTI4YzAgMTE4LjUwNyA4MS44MTMgMjI5LjAxMyAxOTIgMjU2IDExMC4xODctMjYuOTg3IDE5Mi0xMzcuNDkzIDE5Mi0yNTZ2LTEyOEwyMzQuNjY3IDB6bTAgNDI1LjA2N3YtMTkwLjRIODUuMzMzdi0xMjEuNkwyMzQuNjY3IDQ2LjcydjE4Ny43MzNIMzg0Yy0xMS4zMDcgODcuODk0LTY5Ljg2NyAxNjYuMTg3LTE0OS4zMzMgMTkwLjYxNHoiLz48L3N2Zz4=);
+}
+
+.Pokemon-types {
+  position: absolute;
+  right: 0;
+  left: 0;
+  display: flex;
+  height: 5px;
+  transition: transform 600ms;
+
+  &.Pokemon-types-top {
+    top: 0;
+  }
+
+  &.Pokemon-types-bottom {
+    bottom: 0;
+  }
+
+  & .Pokemon-type {
+    flex: 1 0;
+  }
+}
+
+.Pokemon-type-poison {
+  background-color: #a33ea1;
+}
+
+.Pokemon-type-grass {
+  background-color: #7ac74c;
+}
+
+.Pokemon-type-fire {
+  background-color: #ee8130;
+}
+
+.Pokemon-type-flying {
+  background-color: #a98ff3;
+}
+
+.Pokemon-type-water {
+  background-color: #6390f0;
+}
+
+.Pokemon-type-bug {
+  background-color: #a6b91a;
+}
+
+.Pokemon-type-normal {
+  background-color: #a8a77a;
+}
+
+.Pokemon-type-electric {
+  background-color: #f7d02c;
+}
+
+.Pokemon-type-ground {
+  background-color: #e2bf65;
+}
+
+.Pokemon-type-fairy {
+  background-color: #d685ad;
+}
+
+.Pokemon-type-fighting {
+  background-color: #c22e28;
+}
+
+.Pokemon-type-psychic {
+  background-color: #f95587;
+}
+
+.Pokemon-type-rock {
+  background-color: #b6a136;
+}
+
+.Pokemon-type-steel {
+  background-color: #b7b7ce;
+}
+
+.Pokemon-type-ice {
+  background-color: #96d9d6;
+}
+
+.Pokemon-type-ghost {
+  background-color: #735797;
+}
+
+.Pokemon-type-dragon {
+  background-color: #6f35fc;
+}
+
+.Pokemon-type-dark {
+  background-color: #705746;
+}

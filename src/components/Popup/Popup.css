@@ -1,0 +1,148 @@
+@keyframes pokemon-popup-animation {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, 5px, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.Popup {
+  position: fixed;
+  z-index: 4;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(0, -100%, 0);
+  transition: transform 500ms, opacity 500ms;
+
+  &.Popup-active {
+    opacity: 1;
+
+    transform: translate3d(0, 0, 0);
+    transition: transform 500ms 500ms, opacity 500ms 500ms;
+
+    & .Popup-inner {
+      pointer-events: all;
+    }
+  }
+}
+
+.Popup-inner {
+  position: relative;
+  top: 16px;
+  overflow-y: scroll;
+  width: calc(100% - 32px);
+  height: calc(100% - 32px);
+  max-width: 640px;
+  background-color: #fff;
+  pointer-events: none;
+}
+
+.PopupPokemon-title {
+  text-align: center;
+  font-size: 18px;
+  line-height: 50px;
+  width: 100%;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.1);
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.PopupPokemon-line {
+  display: flex;
+  justify-content: center;
+}
+
+.PopupPokemon-line-title {
+  font-size: 16px;
+  line-height: 30px;
+  text-align: center;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.PopupPokemon-column {
+  flex: 1 0;
+}
+
+.PopupPokemon-avatar {
+  width: 120px;
+  height: 120px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: pokemon-popup-animation 2s infinite;
+}
+
+.PopupPokemon-stats {
+  width: 100%;
+  padding: 16px;
+}
+
+.PopupPokemon-stat {
+  font-size: 14px;
+  display: flex;
+  margin: 6px 0;
+}
+
+.PopupPokemon-stat-name {
+  width: 100px;
+  margin-right: 12px;
+}
+
+.PopupPokemon-stat-value {
+  position: relative;
+  color: #fff;
+  flex: 1 0;
+  padding-left: 3px;
+  align-items: center;
+  height: 16px;
+  display: flex;
+  font-size: 12px;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.PopupPokemon-stat-value-percent {
+  position: relative;
+  z-index: 1;
+}
+
+.PopupPokemon-stat-value-graph {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #4caf50;
+}
+
+.PopupPokemon-content {
+  display: flex;
+  justify-content: center;
+  margin: 12px 0;
+}
+
+.PopupPokemon-item {
+  display: inline-block;
+  margin: 4px;
+  padding: 6px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.PopupPokemon-item-bg {
+  background-color: rgba(0, 0, 0, 0.5);
+}

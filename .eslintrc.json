@@ -1,0 +1,29 @@
+{
+    "env": {
+        "browser": true,
+        "node": true,
+        "jest": true
+    },
+    "extends": [
+        "standard",
+        "react"
+    ],
+    "plugins": [
+        "jest"
+    ],
+    "rules": {
+        "semi": ["error", "always"],
+        "space-before-function-paren": ["error", "never"],
+        "no-return-assign": "off",
+        "max-params": ["error", 7],
+        "react/jsx-curly-spacing": ["error", {"when": "always"}] 
+    },
+    "parserOptions": {
+        "ecmaVersion": 7,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true,
+            "experimentalObjectRestSpread": true
+        }
+    }
+}

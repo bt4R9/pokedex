@@ -1,0 +1,14 @@
+{
+    "endpoint": "http://pokeapi.co/api/v2/",
+    "resourcePokemon": "pokemon/",
+    "resourcePokemonSpecies": "pokemon-species/",
+    "count": 802,
+    "requestParams": {
+        "json": true,
+        "retries": 10,
+        "timeout": 10000
+    },
+    "folder": "data",
+    "filename": "pokemons.json",
+    "indecies": "indecies.json"
+}
