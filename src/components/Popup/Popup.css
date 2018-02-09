@@ -46,6 +46,7 @@
   max-width: 640px;
   background-color: #fff;
   pointer-events: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 .PopupPokemon-title {
