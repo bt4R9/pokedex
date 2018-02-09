@@ -5,10 +5,10 @@ self.addEventListener('install', event => {
         caches.open('static').then(cache => {
             return cache.addAll(
                 [
-                    '/build/vendor.js',
-                    '/build/data.js',
-                    '/build/index.js',
-                    '/build/bundle.css'
+                    'vendor.js',
+                    'data.js',
+                    'index.js',
+                    'bundle.css'
                 ]
             );
         })
