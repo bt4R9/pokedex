@@ -17,10 +17,12 @@ describe('utils', () => {
 
     it('should return animation params', () => {
         expect(utils.animateZoom(node)).toEqual({
-            shiftX: 170,
-            shiftY: -10,
-            scaleX: 6.528,
-            scaleY: 4.896
+            scaleX: 0.15625,
+            scaleY: 0.20833333333333334,
+            shiftX: -170,
+            shiftY: 10,
+            x: 100,
+            y: 200
         });
     });
 });
