@@ -23,14 +23,13 @@
   justify-content: center;
   pointer-events: none;
   opacity: 0;
-  transform: translate3d(0, -100%, 0);
-  transition: transform 500ms, opacity 500ms;
+  background: #fff;
 
   &.Popup-active {
     opacity: 1;
 
-    transform: translate3d(0, 0, 0);
-    transition: transform 500ms 500ms, opacity 500ms 500ms;
+    transform: translate3d(0, 0, 0) scale(1);
+    transition: transform 500ms, opacity 500ms;
 
     & .Popup-inner {
       pointer-events: all;
@@ -50,6 +49,7 @@
 }
 
 .PopupPokemon-title {
+  position: relative;
   text-align: center;
   font-size: 18px;
   line-height: 50px;
@@ -60,6 +60,21 @@
   &::first-letter {
     text-transform: uppercase;
   }
+}
+
+.PopupPolemon-cloer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzPjxwYXRoIGQ9Ik0xMiAxMS4yOTNsNy03IC43MDcuNzA3LTcgNyA3IDctLjcwNy43MDctNy03LTcgN0w0LjI5MyAxOWw3LTctNy03TDUgNC4yOTNsNyA3eiIgaWQ9ImEiLz48L2RlZnM+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTQgLTQpIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxtYXNrIGlkPSJiIiBmaWxsPSIjZmZmIj48dXNlIHhsaW5rOmhyZWY9IiNhIi8+PC9tYXNrPjx1c2UgZmlsbD0iIzlCOUI5QiIgZmlsbC1ydWxlPSJub256ZXJvIiB4bGluazpocmVmPSIjYSIvPjxnIG1hc2s9InVybCgjYikiIGZpbGw9IiMyQTJBMkEiPjxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiLz48L2c+PC9nPjwvc3ZnPg==);
+  background-size: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  cursor: pointer;
 }
 
 .PopupPokemon-line {

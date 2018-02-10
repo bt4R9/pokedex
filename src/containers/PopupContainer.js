@@ -1,16 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { togglePopup } from '../actions/popup';
 import Popup from '../components/Popup/Popup';
 
 const mapStateToProps = state => ({
     popupState: state.popup.state,
+    animation: state.popup.animation,
     pokemon: state.pokemons[state.popup.id]
 });
+const mapDispatchToProps = dispatch => bindActionCreators({ togglePopup }, dispatch);
 
 class PopupContainer extends React.PureComponent {
     static propTypes = {
         popupState: PropTypes.string.isRequired,
+        animation: PropTypes.object,
         pokemon: PropTypes.shape({
             abilities: PropTypes.arrayOf(PropTypes.shape({
                 id: PropTypes.string,
@@ -35,17 +40,20 @@ class PopupContainer extends React.PureComponent {
                 back: PropTypes.any
             }),
             id: PropTypes.number
-        })
+        }),
+        togglePopup: PropTypes.func.isRequired
     }
 
     render() {
         return (
             <Popup
                 state={ this.props.popupState }
+                animation={ this.props.animation }
+                onClose={ this.props.togglePopup }
                 { ...this.props.pokemon }
             />
         );
     }
 }
 
-export default connect(mapStateToProps, null)(PopupContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(PopupContainer);

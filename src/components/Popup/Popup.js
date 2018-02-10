@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
+import { generatePokemonGradient } from '../../helpers/utils';
 import './Popup.css';
 
 class Popup extends React.PureComponent {
@@ -28,7 +29,48 @@ class Popup extends React.PureComponent {
             back: PropTypes.any
         }),
         id: PropTypes.number,
-        state: PropTypes.string.isRequired
+        state: PropTypes.string.isRequired,
+        animation: PropTypes.object,
+        onClose: PropTypes.func
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.state === 'opened') {
+            this.setState({
+                animation: nextProps.animation
+            }, () => requestAnimationFrame(() => {
+                this.setState({
+                    animation: {},
+                    animationOnClose: this.state.animation,
+                    popupState: 'opened'
+                });
+            }));
+        } else {
+            this.setState({ animation: { ...this.state.animationOnClose, opacity: 0 } });
+            setTimeout(() => this.setState({ popupState: 'closed' }), 500);
+        }
+    }
+
+    state = {
+        animation: {},
+        popupState: 'closed'
+    }
+
+    getStyle() {
+        const { scaleX, scaleY, shiftX, shiftY, opacity } = this.state.animation;
+        const bg = Array.isArray(this.props.types) ? generatePokemonGradient(this.props.types) : '';
+
+        if (!shiftX) {
+            return {
+                background: bg
+            };
+        }
+
+        return {
+            opacity,
+            transform: `translate3d(${shiftX}px, ${shiftY}px, 0) scale(${scaleX}, ${scaleY})`,
+            background: bg
+        };
     }
 
     renderStats() {
@@ -72,6 +114,10 @@ class Popup extends React.PureComponent {
                 <div className="PopupPokemon">
                     <div className="PopupPokemon-title">
                         { this.props.name }
+                        <div
+                            onClick={ this.props.onClose }
+                            className="PopupPolemon-cloer"
+                        />
                     </div>
                     <div className="PopupPokemon-line">
                         <div
@@ -135,11 +181,11 @@ class Popup extends React.PureComponent {
 
     render() {
         const className = cn({
-            'Popup-active': this.props.state === 'opened'
+            'Popup-active': this.state.popupState === 'opened'
         }, 'Popup');
 
         return (
-            <div className={ className }>
+            <div style={ this.getStyle() } className={ className }>
                 { this.renderContent() }
             </div>
         );

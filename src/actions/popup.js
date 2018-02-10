@@ -1,6 +1,6 @@
 import actions from '../actionTypes';
 
-export const togglePopup = id => (dispatch, getState) => {
+export const togglePopup = (id, animation) => (dispatch, getState) => {
     const popupState = getState().popup.state;
     const isClosed = popupState === 'closed';
     const actionType = isClosed ? actions.POPUP_OPEN : actions.POPUP_CLOSE;
@@ -11,5 +11,5 @@ export const togglePopup = id => (dispatch, getState) => {
         document.body.classList.remove('no-scroll');
     }
 
-    dispatch({ type: actionType, id });
+    dispatch({ type: actionType, id, animation });
 };

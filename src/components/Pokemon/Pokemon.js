@@ -37,16 +37,7 @@ class Pokemon extends React.PureComponent {
         style: {}
     }
 
-    selectPokemon = () => {
-        const style = animateZoom(this.node);
-        this.props.togglePopup(this.props.id);
-
-        if (!this.state.selected) {
-            this.setState({ selected: true, style });
-        } else {
-            setTimeout(() => this.setState({ selected: false, style: {} }), 500);
-        }
-    }
+    selectPokemon = () => this.props.togglePopup(this.props.id, animateZoom(this.node))
 
     getStyle = () => {
         const { shiftX, shiftY, scaleX, scaleY } = this.state.style;
