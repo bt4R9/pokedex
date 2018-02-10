@@ -35,8 +35,6 @@ export function animateZoom(node) {
     return {
         x: rect.x,
         y: rect.y,
-        width: rect.width,
-        height: rect.height,
         shiftX,
         shiftY,
         scaleX,
